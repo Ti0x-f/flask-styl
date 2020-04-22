@@ -2,7 +2,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from flask import render_template, json
+from flask import render_template, json, url_for
 
 from app.recommendations import get_recommendations, get_covers, display
 from app.forms import SearchForm

@@ -1,39 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta name = 'viewport', content = 'width = width-device, initial-scale = 1.0'>
-      <title> {{ title }} </title>
-  </head>
-  <body>
-    <form action = '' method = 'POST'>
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-      {{ form.hidden_tag () }}
+{% block title %}
+  {{ title }}
+{% endblock %}
 
-      <p>
-        {{ form.search.label }}<br>
-        {{ form.search(size = 32) }}<br>
-        {% for error in form.search.errors %}
-          <span style='color:red'>[{{ error }}]</span>
-        {% endfor %}
-      </p>
+{% block styles %}
+  {{ super() }}
+  <link rel = 'stylesheet' href = "{{ url_for('static', filename = 'style.css') }}">
+{% endblock %}
 
-      <p>
-        {{ form.submit() }}
-      </p>
-    </form>
-
-    {% if done %}
-      <table>
-        <tr>
-          <th></th>
-          <th>Track Name</th>
-          <th>Artist Name</th>
-          <th></th>
-        </tr>
-
-        {% include 'recommendations.html' %}
-
-      </table>
-    {% endif %}
-  </body>
-</html>
+{% block content %}
+<div class = 'container-fluid'>
+  <div class = 'row slogan'>
+    <h1>Get more of that one song you love</h1>
+  </div>
+</div>
+<div class = 'container'>
+  <div class = 'row'>
+      <div class = 'col-md'>
+        {{ wtf.quick_form(form) }}
+      </div>
+  </div>
+  {% if done %}
+      {% include 'recommendations.html' %}
+  {% endif %}
+</div>
+{% endblock %}

@@ -34,12 +34,18 @@ def display(recommendations, covers):
     for idx, track in enumerate(recommendations['tracks']):
 
         html_display += f'''
-            <tr>
-                <td><img src = "{covers[idx]}"></td>
-                <td>{track['name']}</td>
-                <td>{track['artists'][0]['name']}</td>
-                <td><a href = "{track['external_urls']['spotify']}">Play It</a></td>
-            </tr>'''
+            <div class = 'row recommendation'>
+                <div class = 'col-md-2'>
+                    <img src = "{covers[idx]}">
+                </div>
+                <div class = 'col-md-6 info'>
+                    <p>{track['name']} by {track['artists'][0]['name']}</p>
+                </div>
+                <div class = 'col-md-4'>
+                    <a href = "{track['external_urls']['spotify']}" target = '_blank'><button class = 'button'>Play It</button></a>
+                </div>
+            </div>
+        '''
 
     with open('app/templates/recommendations.html', 'w') as html_file:
         html_file.write(html_display)
