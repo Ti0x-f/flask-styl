@@ -19,10 +19,10 @@ def index():
 
         recommendations = get_recommendations(form.search.data)
         covers = get_covers(recommendations)
-        display(recommendations, covers)
-        done = True
+        html_code = display(recommendations, covers)
+
 
         return render_template('index.html', title = 'STYL - Recommendations based on that one song you love', \
-            form = form, done = done)
+            form = form, html_code = html_code)
 
     return render_template('index.html', title = 'STYL - Recommendations based on that one song you love', form = form)

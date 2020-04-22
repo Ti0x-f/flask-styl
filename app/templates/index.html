@@ -22,8 +22,8 @@
         {{ wtf.quick_form(form) }}
       </div>
   </div>
-  {% if done %}
-      {% include 'recommendations.html' %}
+  {% if html_code %}
+    {{ html_code|safe}}
   {% endif %}
 </div>
 {% endblock %}

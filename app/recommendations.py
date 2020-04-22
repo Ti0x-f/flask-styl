@@ -46,6 +46,4 @@ def display(recommendations, covers):
                 </div>
             </div>
         '''
-
-    with open('app/templates/recommendations.html', 'w') as html_file:
-        html_file.write(html_display)
+    return html_display
