@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name = 'viewport', content = 'width = width-device, initial-scale = 1.0'>
+      <title> {{ title }} </title>
+  </head>
+  <body>
+    <form action = '' method = 'POST'>
+
+      {{ form.hidden_tag () }}
+
+      <p>
+        {{ form.search.label }}<br>
+        {{ form.search(size = 32) }}<br>
+        {% for error in form.search.errors %}
+          <span style='color:red'>[{{ error }}]</span>
+        {% endfor %}
+      </p>
+
+      <p>
+        {{ form.submit() }}
+      </p>
+    </form>
+
+    {% if done %}
+      <table>
+        <tr>
+          <th></th>
+          <th>Track Name</th>
+          <th>Artist Name</th>
+          <th></th>
+        </tr>
+
+        {% include 'recommendations.html' %}
+
+      </table>
+    {% endif %}
+  </body>
+</html>
